@@ -15,10 +15,10 @@ export default function Page() {
   const [filteredList, setFilteredList] = useState(favorites?.list);
 
   useEffect(() => {
-    const getFromStorage = (!favorites || !favorites.list || favorites.list.length < 1) && localStorage.getItem("favorites") && JSON.parse(localStorage.getItem("favorites"));
+    const getFromStorage = (!favorites || !favorites.list || favorites.list.length < 1) && localStorage.getItem("favorites") && JSON.parse(localStorage.getItem("favorites") as string);
     if(getFromStorage){
       const savedFavorites = localStorage.getItem("favorites")
-      setFavorites({filterTerm: "", list: JSON.parse(savedFavorites)})
+      setFavorites({filterTerm: "", list: JSON.parse(savedFavorites as string)})
     }
   },[])
   useEffect(() => {
